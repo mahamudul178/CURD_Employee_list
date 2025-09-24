@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-w17t8*zs)2^!f_=39l5+791fv5l$mn!az0qz&e=8=ced$r#fjo
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = False
-ALLOWED_HOSTS = ['curd-employee.onrender.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['curd-employee-list.onrender.com', '127.0.0.1', 'localhost']
 
 
 
