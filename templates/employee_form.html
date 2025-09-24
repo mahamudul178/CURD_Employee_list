@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %} Employee Form {% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between mb-3">
+    <h2>Create a new Employee</h2>
+    <a href="{% url 'employee_list' %}" class="btn btn-secondary align-self-center">
+        <i class="fa fa-arrow-left"></i> Back to List
+    </a>
+</div>
+
+
+<!-- -----------------Unique id show  ------------------>
+{% if form.non_field_errors %}
+  <div class="alert alert-danger">
+    {% for error in form.non_field_errors %}
+      {{ error }}
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% if form.employee_id.errors %}
+  <div class="alert alert-danger">
+    {% for error in form.employee_id.errors %}
+      {{ error }}
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% if form.employee_email.errors %}
+  <div class="alert alert-danger">
+    {% for error in form.employee_email.errors %}
+      {{ error }}
+    {% endfor %}
+  </div>
+{% endif %}
+<!-- --------------------------------------------------------------------- -->
+
+<!------------ Employee Form code --------------->
+
+<div class="card shadow-sm p-4">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Employee ID</label>
+            {{ form.employee_id }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            {{ form.emploee_name }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            {{ form.employee_email }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Contact Number</label>
+            {{ form.employee_contact }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            <i class="fa fa-save"></i> Save Employee
+        </button>
+
+
+        <a href="{% url 'employee_list' %}" class="btn btn-outline-secondary">
+            Cancel
+        </a>
+    </form>
+</div>
+{% endblock %}
+
+
+<!-- ---------------------------------------------------------------------------------------------- -->
+
+

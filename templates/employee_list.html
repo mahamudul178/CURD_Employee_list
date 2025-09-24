@@ -1,0 +1,64 @@
+{% extends "base.html" %} {% block title %} Employee List {% endblock %} 
+
+{% block content %}
+
+<div class="d-flex justify-content-between mb-3">
+    <h1>Employee List</h1>
+    <a href="{% url 'employee_create' %}" class="btn btn-primary align-self-center">Create Employee</a>
+</div>
+
+
+
+
+<form method="GET" class="mb-3 d-flex">
+    <input type="text" name="q" class="form-control me-2" placeholder="Search by ID, Name, Email or Contact" value="{{ request.GET.q }}">
+    <button type="submit" class="btn btn-primary">Search</button>
+    <a href="{% url 'employee_list' %}" class="btn btn-outline-secondary ms-2">Reset</a>
+</form>
+
+
+{% if employees.count == 0 %}
+    <div class="alert alert-warning">No employees found.</div>
+{% endif %}
+
+
+<div class="card shadow-sm p-4">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Employee ID</th>
+            <th scope="col">Employee Name</th>
+            <th scope="col">Employee Email</th>
+            <th scope="col">Employee contact</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for employee in employees %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ employee.employee_id }}</td>
+            <td>{{ employee.emploee_name }}</td>
+            <td>{{ employee.employee_email }}</td>
+            <td>{{ employee.employee_contact }}</td>
+            <td> 
+            <a href="{% url 'employee_update' employee.id %}" class="btn btn-success btn-sm">Edit </a>
+             <a href="{% url 'employee_delete' employee.id %}" class="btn btn-danger btn-sm">Delete</a>
+               {% endfor %} 
+               </td>
+</table>
+
+
+
+{% endblock %}
+
