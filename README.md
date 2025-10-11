@@ -1,6 +1,4 @@
-![alt text](picture/1.png)
-![alt text](picture/2.png)
-![alt text](picture/3.png)
+
 
 #  Employee Management System (CRUD)
 
@@ -32,6 +30,11 @@ This project is designed to demonstrate Django’s core functionalities such as 
 | **Deployment** | Render  |
 
 ---
+
+![alt text](picture/1.png)
+![alt text](picture/2.png)
+![alt text](picture/3.png)
+
 
 👨‍💻 Author
 
